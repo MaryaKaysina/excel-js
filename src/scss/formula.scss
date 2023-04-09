@@ -12,11 +12,18 @@
   border-bottom: 1px solid $border-color;
 
   & .info {
-    font-size: 18px;
     color: #999;
-    text-align: center;
     border-right: 1px solid $border-color;
     min-width: $info-cell-width;
+    height: 100%;
+  }
+
+  & mjx-container[jax="CHTML"][display="true"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
   }
 
   & .input {

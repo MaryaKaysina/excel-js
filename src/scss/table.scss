@@ -6,7 +6,8 @@
   right: 0;
   left: 0;
   top: $formula-height + $toolbar-height + $header-height;
-  overflow-x: auto;
+  bottom: 0;
+  overflow: auto;
   padding-bottom: 2px;
 
   & .row {
@@ -15,13 +16,20 @@
     min-height: $row-height;
   }
 
+  //& .row:first-child {
+  //  position: fixed;
+  //}
+
+  //& .row:nth-child(2) {
+  //  margin-top: $row-height;
+  //}
+
   & .row-info {
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: $info-cell-width;
     min-height: $row-height;
-    height: 100%;
     border: 1px solid $border-color;
     border-top: none;
     background: #f8f9fa;
