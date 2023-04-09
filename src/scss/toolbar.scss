@@ -13,6 +13,6 @@
   padding: 7px 10px;
 
   & .button {
-    @include button();
+    @include button(#34a853);
   }
 }

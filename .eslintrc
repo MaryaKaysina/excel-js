@@ -6,7 +6,9 @@
     "node": true
   },
   "rules": {
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "object-curly-spacing": ["error", "always"],
+    "operator-linebreak": ["error", "before"]
   },
   "extends": ["eslint:recommended", "google"]
 }
