@@ -1,0 +1,23 @@
+@import "variables";
+@import "mixins";
+
+.excel__footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $footer-height;
+
+  & .buttons-group {
+    display: flex;
+    height: 100%;
+  }
+
+  & .button {
+    @include button-list();
+  }
+}

@@ -22,9 +22,11 @@
     line-height: 22px;
     outline: none;
     transition: border-color .3s ease-in-out;
+
     &:focus {
       border-color: #333;
     }
+
     &:hover {
       border-color: $border-color;
     }

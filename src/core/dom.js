@@ -8,6 +8,7 @@ class Dom {
       ? document.querySelector(selector)
       : selector;
   }
+
   /**
    * Get/set innerHTML Element's.
    * @param {string} html
@@ -66,6 +67,49 @@ class Dom {
       this.$el.appendChild(node);
     }
     return this;
+  }
+
+  /**
+   * Find element.
+   * @param {string} selector
+   * @return {HTMLElement} this element.
+   */
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  /**
+   * Get element's coordinates.
+   * @return {object} with element's coordinates.
+   */
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  /**
+   * Getter element's data-attributes.
+   * @return {object} dataset.
+   */
+  get data() {
+    return this.$el.dataset;
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  css(styles = {}) {
+    Object
+        .keys(styles)
+        .forEach((key) => this.$el.style[key] = styles[key]);
+  }
+
+  addClass(classList) {
+    this.$el.classList.add(classList);
+  }
+
+  removeClass(classList) {
+    this.$el.classList.remove(classList);
   }
 }
 

@@ -5,8 +5,9 @@
   position: relative;
   background: transparent;
   border: none;
-  color: rgba(0,0,0,.7);
+  color: rgba(0, 0, 0, .7);
   cursor: pointer;
+  transition: all .3s ease-in-out;
 
   & > span {
     font-size: 28px;
@@ -19,5 +20,34 @@
 
   &:hover {
     background: #eee;
+  }
+}
+
+@mixin button-list($color: #34a853) {
+  display: inline-flex;
+  padding: 3px 10px;
+  text-align: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+  margin-right: 10px;
+  transition: all .3s ease-in-out;
+
+  & > span {
+    font-size: 28px;
+  }
+
+  &:hover {
+    background: #eee;
+  }
+
+  &:active,
+  &.active {
+    color: $color;
+    background: #e6f4ea;
   }
 }
