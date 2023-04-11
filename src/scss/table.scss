@@ -6,11 +6,13 @@
   right: 0;
   left: 0;
   top: $formula-height + $toolbar-height + $header-height;
-  bottom: 0;
+  bottom: $footer-height;
   overflow: auto;
   padding-bottom: 2px;
+  user-select: none;
 
   & .row {
+    position: relative;
     display: flex;
     flex-direction: row;
     min-height: $row-height;
@@ -25,6 +27,7 @@
   //}
 
   & .row-info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,6 +43,7 @@
   }
 
   & .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,8 +68,73 @@
 
     &.selected {
       border: none;
-      outline: 2px solid #3c74ff;
+      outline: 2px solid $primary-color;
       z-index: 2;
+    }
+  }
+
+  & .col-resize,
+  & .row-resize {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  & .col-resize {
+    top: 3px;
+    bottom: 3px;
+    right: -4px;
+    width: 10px;
+    border-left: 3px solid #000;
+    border-right: 3px solid #000;
+    cursor: col-resize;
+  }
+
+  & .row-resize {
+    right: 10px;
+    left: 10px;
+    bottom: -4px;
+    height: 10px;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    cursor: row-resize;
+  }
+
+  & .column.active {
+    & .col-resize {
+      opacity: 1;
+    }
+
+    & .col-resize:before {
+      content: "";
+      position: absolute;
+      background: #bfbfbf;
+      width: 6px;
+      top: 0;
+      height: 100vh;
+      right: -1px;
+    }
+  }
+
+  & .row.active {
+    & .row-resize {
+      opacity: 1;
+    }
+
+    & .row-resize:before {
+      content: "";
+      position: absolute;
+      background: #bfbfbf;
+      height: 6px;
+      bottom: 0;
+      width: 100vw;
+      left: -10px;
+      z-index: 1;
     }
   }
 }
