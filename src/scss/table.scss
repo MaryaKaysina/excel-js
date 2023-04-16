@@ -71,6 +71,10 @@
       outline: 2px solid $primary-color;
       z-index: 2;
     }
+
+    &.selected-group {
+      background: #ebf1ff;
+    }
   }
 
   & .col-resize,
