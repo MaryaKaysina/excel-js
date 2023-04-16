@@ -1,13 +1,15 @@
 import { ExcelComponent } from '@core/ExcelComponent';
+import { $ } from '@core/dom';
 
 export class Formula extends ExcelComponent {
   static tagName = 'section';
   static className = 'excel__formula';
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click'],
+      listeners: ['input', 'keydown'],
+      ...options,
     });
   }
 
@@ -33,10 +35,23 @@ export class Formula extends ExcelComponent {
           </mtable>
         </math>
       </div>
-      <label>
-        <input type="text" class="input" spellcheck="false">
-      </label>
+      <div id="formula" class="input" contenteditable spellcheck="false">
+      </div>
     `;
+  }
+
+  init() {
+    super.init();
+
+    this.$formula = this.$root.find('#formula');
+
+    this.$subscribe('table:select', ($cell) => {
+      this.$formula.text($cell.text());
+    });
+
+    this.$subscribe('table:input', ($cell) => {
+      this.$formula.text($cell.text());
+    });
   }
 
   /**
@@ -44,15 +59,15 @@ export class Formula extends ExcelComponent {
    * @param {Event} event
    */
   onInput(event) {
-    console.log(this.$root);
-    console.log('Formula: onInput', event.target.value.trim());
+    this.$emit('formula:input', $(event.target).text());
   }
 
-  /**
-   * Listener on event "click".
-   * @param {Event} event
-   */
-  onClick(event) {
-    console.log(this.$root);
+  onKeydown(event) {
+    const keys = ['Enter', 'Tab'];
+
+    if (keys.includes(event.key)) {
+      event.preventDefault();
+      this.$emit('formula:done');
+    }
   }
 }

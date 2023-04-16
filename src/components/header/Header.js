@@ -4,6 +4,13 @@ export class Header extends ExcelComponent {
   static tagName = 'header';
   static className = 'excel__header';
 
+  constructor($root, options) {
+    super($root, {
+      name: 'Header',
+      ...options,
+    });
+  }
+
   /**
    * Returning template component.
    * @return {HTMLElement} The x value.
