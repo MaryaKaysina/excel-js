@@ -9,6 +9,10 @@ export class DOMListener {
     this.listeners = listeners;
   }
 
+  /**
+   * Add listeners to element.
+   * Method must implemented in Component
+   */
   initDOMListeners() {
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);
@@ -23,6 +27,9 @@ export class DOMListener {
     });
   }
 
+  /**
+   * Remove listeners to element.
+   */
   removeDOMListeners() {
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);

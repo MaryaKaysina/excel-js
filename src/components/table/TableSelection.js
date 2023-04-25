@@ -28,4 +28,12 @@ export class TableSelection {
     this.group.forEach(($el) => $el.addClass(TableSelection.classNameGroup));
     this.current.addClass(TableSelection.className);
   }
+
+  applyStyle(style) {
+    this.group.forEach(($el) => $el.css(style));
+  }
+
+  get selectorIds() {
+    return this.group.map(($el) => $el.getId());
+  }
 }

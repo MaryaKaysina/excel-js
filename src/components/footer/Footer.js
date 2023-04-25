@@ -11,10 +11,6 @@ export class Footer extends ExcelComponent {
     });
   }
 
-  /**
-   * Returning template component.
-   * @return {HTMLElement} The x value.
-   */
   toHTML() {
     return `
       <div class="buttons-group">
