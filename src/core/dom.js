@@ -1,3 +1,5 @@
+import { DEFAULT_STYLES } from '@/consts';
+
 /**
  * Class Dom.
  * @param {string|HTMLElement} selector selector as string or DOM node.
@@ -94,35 +96,81 @@ class Dom {
     return this.$el.dataset;
   }
 
+  /**
+   * Find element.
+   * @param {string} selector
+   * @return {HTMLElement} this element
+   */
   find(selector) {
     return $(this.$el.querySelector(selector));
   }
 
+  /**
+   * Find all elements.
+   * @param {string} selector
+   * @return {HTMLElement} this elements
+   */
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
 
+  /**
+   * Add CSS styles to element.
+   * @param {object} styles default {}
+   */
   css(styles = {}) {
     Object
         .keys(styles)
         .forEach((key) => this.$el.style[key] = styles[key]);
   }
 
+  /**
+   * Get CSS styles element.
+   * @param {array} styles list of styles to get
+   * @return {object} current styles
+   */
+  getStyles(styles) {
+    return styles.reduce((result, style) => {
+      result[style] = this.$el.style[style] || DEFAULT_STYLES[style];
+      return result;
+    }, {});
+  }
+
+  /**
+   * Add CSS class to element.
+   * @param {string} className
+   * @return {HTMLElement} this elements
+   */
   addClass(className) {
     this.$el.classList.add(className);
     return this;
   }
 
+  /**
+   * Remove CSS class to element.
+   * @param {string} className
+   * @return {HTMLElement} this elements
+   */
   removeClass(className) {
     this.$el.classList.remove(className);
     return this;
   }
 
+  /**
+   * Add focus state to element.
+   * @return {HTMLElement} this elements
+   */
   focus() {
     this.$el.focus();
     return this;
   }
 
+  /**
+   * Get element's ID.
+   * @param {boolean} isParse default false
+   * @return {object | string} object with row's number and column's number
+   * or string data attribute data-id
+   */
   getId(isParse = false) {
     if (isParse) {
       const parsed = this.getId().split(':');
@@ -131,8 +179,13 @@ class Dom {
     return this.data.id;
   }
 
+  /**
+   * Replace text for element.
+   * @param {string} text
+   * @return {HTMLElement | string} this element or element's text
+   */
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$el.textContent = text;
       return this;
     }
@@ -140,6 +193,20 @@ class Dom {
       return this.$el.value.trim();
     }
     return this.$el.textContent.trim();
+  }
+
+  /**
+   * Getter/Setter element's attribute.
+   * @param {string} name attribute
+   * @param {string} value attribute
+   * @return {HTMLElement} this element
+   */
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value);
+      return this;
+    }
+    return this.$el.getAttribute(name);
   }
 }
 
