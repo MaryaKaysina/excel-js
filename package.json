@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "lint": "eslint --fix --ext .js,.jsx ./src"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "eslint": "^6.0.0",
     "eslint-config-google": "^0.14.0",
     "eslint-loader": "^4.0.2",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "sass": "^1.60.0",

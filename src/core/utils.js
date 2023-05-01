@@ -96,3 +96,31 @@ export const debounce = (fn, wait) => {
     timeout = setTimeout(later, wait);
   };
 };
+
+/**
+ * Create clone object.
+ * @param {object} obj target object
+ * @return {object} new object
+ */
+export const clone = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+};
+
+/**
+ * Formatting date.
+ * @param {object} date
+ * @return {object} new object
+ */
+export const toFormatDate = (date) => {
+  return new Date(date).toLocaleDateString()
+    + ' '
+    + new Date(date).toLocaleTimeString();
+};
+
+/**
+ * Default action should not be taken as it normally would be.
+ * @param {Event} event
+ */
+export const preventDefault = (event) => {
+  event.preventDefault();
+};

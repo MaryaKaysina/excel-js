@@ -1,5 +1,5 @@
-import { storage } from '@core/utils';
-import { DEFAULT_STYLES, DEFAULT_TITLE, KEY_FOR_LOCAL } from '@/consts';
+import { DEFAULT_STYLES, DEFAULT_TITLE } from '@/consts';
+import { clone } from '@core/utils';
 
 const defaultState = {
   rowState: {},
@@ -9,8 +9,15 @@ const defaultState = {
   currentText: '',
   currentTitle: DEFAULT_TITLE,
   currentStyles: DEFAULT_STYLES,
+  openedDate: new Date().toJSON(),
 };
 
-export const initialState = storage(KEY_FOR_LOCAL)
-  ? storage(KEY_FOR_LOCAL)
-  : defaultState;
+const normalize = (state) => ({
+  ...state,
+  currentStyles: DEFAULT_STYLES,
+  currentText: '',
+});
+
+export const normalizeInitialState = (state) => {
+  return state ? normalize(state) : clone(defaultState);
+};

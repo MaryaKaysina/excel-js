@@ -14,11 +14,21 @@
     right: 0;
     left: 0;
     height: $dashboard-height;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
     align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 5px 2px rgba(60, 64, 67, .15);
     z-index: 1000;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+  }
+
+  &__subtitle {
+    justify-self: center;
   }
 
   &__new {
@@ -53,6 +63,10 @@
     padding: 1rem;
   }
 
+  &__list-header {
+    border-bottom: 1px solid #e7e7e7;
+  }
+
   &__list-header,
   &__record {
     display: grid;
@@ -73,6 +87,14 @@
     & a {
       font-size: 14px;
     }
+
+    &--not-found {
+      display: flex;
+      justify-content: center;
+      font-style: italic;
+      font-size: 16px;
+      color: #999;
+    }
   }
 
   &__record {
@@ -81,7 +103,7 @@
     transition: all .3s ease-in-out;
 
     &:hover {
-      background: #dae4ff;
+      background: #c7f3c7;
     }
   }
 }
