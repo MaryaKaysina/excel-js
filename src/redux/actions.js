@@ -4,6 +4,7 @@ import {
   TABLE_RESIZE,
   APPLY_STYLE,
   CHANGE_TITLE,
+  UPDATE_DATE,
 } from '@/redux/types';
 
 export const tableResize = (data) => {
@@ -38,5 +39,11 @@ export const changeTitle = (data) => {
   return {
     type: CHANGE_TITLE,
     data,
+  };
+};
+
+export const updateDate = () => {
+  return {
+    type: UPDATE_DATE,
   };
 };

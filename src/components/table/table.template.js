@@ -37,6 +37,7 @@ const toCell = (state, row) => {
         data-id="${id}"
         data-value="${data}"
         style="${styles}"
+        spellcheck="false"
       >
       ${parseFormula(data)}
       </div>
