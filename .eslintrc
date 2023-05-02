@@ -3,12 +3,25 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "rules": {
     "require-jsdoc": "off",
-    "object-curly-spacing": ["error", "always"],
-    "operator-linebreak": ["error", "before"]
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "operator-linebreak": [
+      "error",
+      "before"
+    ]
   },
-  "extends": ["eslint:recommended", "google"]
+  "plugins": [
+    "jest"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ]
 }
