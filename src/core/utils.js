@@ -1,3 +1,5 @@
+import { KEY_FOR_LOCAL } from '@/consts';
+
 /**
  * Format string to capitalize.
  * @param {string} string text
@@ -123,4 +125,13 @@ export const toFormatDate = (date) => {
  */
 export const preventDefault = (event) => {
   event.preventDefault();
+};
+
+/**
+ * Formatting ID table to key in local storage.
+ * @param {string | number} param
+ * @return {string} key in local storage
+ */
+export const storageName = (param) => {
+  return `${KEY_FOR_LOCAL}:${param}`;
 };
