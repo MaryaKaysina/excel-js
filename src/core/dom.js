@@ -1,4 +1,4 @@
-import { DEFAULT_STYLES } from '@/consts';
+import { DEFAULT_STYLES } from '../consts';
 
 /**
  * Class Dom.
