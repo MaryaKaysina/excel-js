@@ -1,4 +1,4 @@
-import { Page } from '@core/Page';
+import { Page } from '@core/page/Page';
 import { $ } from '@core/dom';
 import sheets from './../assets/images/sheets.png';
 import { createRecordsTable } from '@/components/dashboard/dashboard.function';

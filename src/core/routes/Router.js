@@ -1,5 +1,6 @@
 import { $ } from '../dom';
 import { ActiveRoute } from './ActiveRoute';
+import { Loader } from '../../components/loader/Loader';
 
 export class Router {
   constructor(selector, routes) {
@@ -10,9 +11,9 @@ export class Router {
     this.$placeholder = $(selector);
     this.routes = routes;
     this.page = null;
+    this.loader = new Loader().toHtml();
 
     this.changePageHandler = this.changePageHandler.bind(this);
-
     this.init();
   }
 
@@ -26,18 +27,29 @@ export class Router {
   }
 
   /**
+   * Append Element.
+   * @param {HTMLElement} root root Element.
+   * @param {HTMLElement} page child Element.
+   */
+  append(root, page) {
+    root.clear().append(page);
+  }
+
+  /**
    * Handler for listener 'hashchanged'.
    * Listener event 'hashchanged' in window
    */
-  changePageHandler() {
+  async changePageHandler() {
     if (this.page) this.page.destroy();
-    this.$placeholder.clear();
+    this.append(this.$placeholder, this.loader);
 
     const Page = ActiveRoute.path.includes('excel')
       ? this.routes.excel
       : this.routes.dashboard;
     this.page = new Page(ActiveRoute.param);
-    this.$placeholder.append(this.page.getRoot());
+
+    const root = await this.page.getRoot();
+    this.append(this.$placeholder, root);
     this.page.afterRender();
   }
 
